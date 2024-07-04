@@ -85,7 +85,7 @@ def write_genre_counts(df):
     try:
         genre_counts = df.groupBy('genre').agg(_sum(col('watchfrequency')).alias('genre_count'))
 
-        user_genre_location.write.mode('overwrite').csv("hdfs://Masterv2:9000/sparkv2/Slave1v2/Users")
+        user_genre_location.write.mode('overwrite').csv("hdfs://Masterv2:9000/sparkv2/Slave1v2/Genres")
         print("Saved user_genre_location.csv successfully.")
     except Exception as e:
         print("Error saving user_genre_location.csv:", e)
