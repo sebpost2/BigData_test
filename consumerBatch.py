@@ -89,6 +89,15 @@ def write_genre_counts(df):
         print("Saved user_genre_location.csv successfully.")
     except Exception as e:
         print("Error saving user_genre_location.csv:", e)
+        
+def write_user_genre_location(df):
+    try:
+        user_genre_location = df.select('user_location', 'genre', 'title', 'watchfrequency')
+
+        user_genre_location.write.mode('overwrite').csv("hdfs://Masterv2:9000/sparkv2/Slave1v2/Users")
+        print("Saved user_genre_location.csv successfully.")
+    except Exception as e:
+        print("Error saving user_genre_location.csv:", e)
 
 if __name__ == '__main__':
     consume_and_process_with_spark_batch()
